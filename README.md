@@ -43,6 +43,7 @@ yarn add @reason-react-native/inappbrowser
 
 ```reason
 open Js.Promise;
+open ReactNativeInAppBrowser;
 
 let opts = iosOptions(~preferredBarTintColor="#ff0000", ());
 openBrowser("https://rescript-lang.org", `IosOptions(opts))
@@ -55,6 +56,7 @@ openBrowser("https://rescript-lang.org", `IosOptions(opts))
 
 ```reason
 open Js.Promise;
+open ReactNativeInAppBrowser;
 
 openAuthIos("https://example.com/auth", "myschema://auth", `IosOptions(iosOptions()))
 |> Js.Promise.then_((result: authResult) => {
