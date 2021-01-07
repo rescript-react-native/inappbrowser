@@ -1,56 +1,29 @@
-## How to use this template
+# `@reason-react-native/inappbrowser`
 
-- ⚠️ **Don't fork this repository.** Use the "Use this template" green GitHub
-  button.
-- Put your bindings in `src/ReactNativeXxxxxxxxxx` & rename accordingly or use
-  `bsconfig.json` `"namespace"` field (more on this below),
-- Update all occurences of
-
-  - `@reason-react-native/__template__`
-  - `https://github.com/reason-react-native/__template__`
-  - `__template__`
-  - `react-native-XXXXXXXXXX`
-  - `https://github.com/OWNER/react-native-XXXXXXXXXX`
-  - `ReactNativeXxxxxxxxxx`. If you have more than a file exposed, you should
-    consider using ReScript custom namespace by adjusting `bsconfig.json`
-    and adding a `"namespace": "react-native-something"` (note that it will be
-    converted to `ReactNativeXxxxxxxxxx`)
-
-- Add your `react-native-XXXXXXXXXX` (adjusted) in `peerDependencies`
-  & `devDependencies` section
-- Adjust the changelog (and/or clean it)
-- Remove this part ⬆ & keep everything below ⬇
-
----
-
-# `@reason-react-native/__template__`
-
-[![Build Status](https://github.com/reason-react-native/__template__/workflows/Build/badge.svg)](https://github.com/reason-react-native/__template__/actions)
-[![Version](https://img.shields.io/npm/v/@reason-react-native/__template__.svg)](https://www.npmjs.com/@reason-react-native/__template__)
 [![Chat](https://img.shields.io/discord/235176658175262720.svg?logo=discord&colorb=blue)](https://reason-react-native.github.io/discord/)
 
 [ReScript](https://rescript-lang.org) / [Reason](https://reasonml.github.io) bindings for
-[`react-native-XXXXXXXXXX`](https://github.com/OWNER/react-native-XXXXXXXXXX).
+[`react-native-inappbrowser-reborn`](https://github.com/proyecto26/react-native-inappbrowser).
 
-Exposed as `ReactNativeXxxxxxxxxx` module.
+Exposed as `ReactNativeInAppBrowser` module.
 
-`@reason-react-native/__template__` X.y.\* means it's compatible with
-`react-native-XXXXXXXXXX` X.y.\*
+`@reason-react-native/inappbrowser` X.y.\* means it's compatible with
+`react-native-inappbrowser-reborn` X.y.\*
 
 ## Installation
 
 When
-[`react-native-XXXXXXXXXX`](https://github.com/OWNER/react-native-XXXXXXXXXX)
+[`react-native-inappbrowser-reborn`](https://github.com/proyecto26/react-native-inappbrowser)
 is properly installed & configured by following their installation instructions,
 you can install the bindings:
 
 ```console
-npm install @reason-react-native/__template__
+npm install @reason-react-native/inappbrowser
 # or
-yarn add @reason-react-native/__template__
+yarn add @reason-react-native/inappbrowser
 ```
 
-`@reason-react-native/__template__` should be added to `bs-dependencies` in your
+`@reason-react-native/inappbrowser` should be added to `bs-dependencies` in your
 `bsconfig.json`:
 
 ```diff
@@ -60,7 +33,7 @@ yarn add @reason-react-native/__template__
     "reason-react",
     "reason-react-native",
     // ...
-+    "@reason-react-native/__template__"
++    "@reason-react-native/inappbrowser"
   ],
   //...
 }
@@ -68,15 +41,43 @@ yarn add @reason-react-native/__template__
 
 ## Usage
 
+### Examples
+
+```reason
+open Js.Promise;
+
+let opts = iosOptions(~preferredBarTintColor="#ff0000", ());
+openBrowserIos("https://rescript-lang.org", opts)
+|> Js.Promise.then_((result: browserResult) => {
+     Js.log(result.resultType);
+     resolve();
+   })
+|> ignore;
+```
+
+```reason
+open Js.Promise;
+
+openAuthIos("https://example.com/auth", "myschema://auth", iosOptions())
+|> Js.Promise.then_((result: authResult) => {
+     switch (result.url) {
+       | Some(url) => Js.log(url)
+       | None => Js.log("Something went wrong")
+     };
+     resolve();
+   })
+|> ignore;
+```
+
 ### Types
 
-#### `ReactNativeXxxxxxxxxx.t`
+#### `ReactNativeInAppBrowser.t`
 
 ...
 
 ### Methods
 
-#### `ReactNativeXxxxxxxxxx.method`
+#### `ReactNativeInAppBrowser.method`
 
 ...
 

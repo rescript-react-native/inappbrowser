@@ -1,12 +1,14 @@
 {
-  "name": "@reason-react-native/__template__",
-  "description": "ReScript bindings for react-native-XXXXXXXXXX",
-  "version": "0.0.0",
+  "name": "@reason-react-native/inappbrowser",
+  "description": "ReScript bindings for react-native-inappbrowser",
+  "version": "3.5.0",
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {},
-  "repository": "https://github.com/reason-react-native/__template__.git",
+  "peerDependencies": {
+    "react-native-inappbrowser-reborn": "^3.5.1"
+  },
+  "repository": "https://github.com/reason-react-native/react-native-inappbrowser.git",
   "license": "MIT",
   "keywords": [
     "rescript",
@@ -56,5 +58,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "dependencies": {}
 }
