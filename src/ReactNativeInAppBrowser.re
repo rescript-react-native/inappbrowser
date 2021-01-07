@@ -80,24 +80,31 @@ external androidOptions:
 external isAvailable: unit => Js.Promise.t(bool) = "isAvailable";
 
 [@bs.module "react-native-inappbrowser-reborn"] [@bs.scope "InAppBrowser"]
-external openBrowserIos: (string, iosOptions) => Js.Promise.t(browserResult) =
-  "open";
-
-[@bs.module "react-native-inappbrowser-reborn"] [@bs.scope "InAppBrowser"]
-external openBrowserAndroid:
-  (string, androidOptions) => Js.Promise.t(browserResult) =
+external openBrowser:
+  (
+    string,
+    [@bs.unwrap] [
+      | `IosOptions(iosOptions)
+      | `AndroidOptions(androidOptions)
+    ]
+  ) =>
+  Js.Promise.t(browserResult) =
   "open";
 
 [@bs.module "react-native-inappbrowser-reborn"] [@bs.scope "InAppBrowser"]
 external close: unit => unit = "close";
 
 [@bs.module "react-native-inappbrowser-reborn"] [@bs.scope "InAppBrowser"]
-external openAuthIos: (string, string, iosOptions) => Js.Promise.t(authResult) =
-  "openAuth";
-
-[@bs.module "react-native-inappbrowser-reborn"] [@bs.scope "InAppBrowser"]
-external openAuthAndroid:
-  (string, string, androidOptions) => Js.Promise.t(authResult) =
+external openAuth:
+  (
+    string,
+    string,
+    [@bs.unwrap] [
+      | `IosOptions(iosOptions)
+      | `AndroidOptions(androidOptions)
+    ]
+  ) =>
+  Js.Promise.t(authResult) =
   "openAuth";
 
 [@bs.module "react-native-inappbrowser-reborn"] [@bs.scope "InAppBrowser"]

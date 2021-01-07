@@ -45,7 +45,7 @@ yarn add @reason-react-native/inappbrowser
 open Js.Promise;
 
 let opts = iosOptions(~preferredBarTintColor="#ff0000", ());
-openBrowserIos("https://rescript-lang.org", opts)
+openBrowser("https://rescript-lang.org", `IosOptions(opts))
 |> Js.Promise.then_((result: browserResult) => {
      Js.log(result.resultType);
      resolve();
@@ -56,7 +56,7 @@ openBrowserIos("https://rescript-lang.org", opts)
 ```reason
 open Js.Promise;
 
-openAuthIos("https://example.com/auth", "myschema://auth", iosOptions())
+openAuthIos("https://example.com/auth", "myschema://auth", `IosOptions(iosOptions()))
 |> Js.Promise.then_((result: authResult) => {
      switch (result.url) {
        | Some(url) => Js.log(url)
@@ -70,23 +70,19 @@ openAuthIos("https://example.com/auth", "myschema://auth", iosOptions())
 ### Types
 
 #### `authResult`
-#### `browserResult`
-#### `iosOptions`
-#### `androidOptions`
 
+#### `browserResult`
+
+#### `iosOptions`
+
+#### `androidOptions`
 
 ### Methods
 
-#### `ReactNativeInAppBrowser.openBrowserIos`
+#### `ReactNativeInAppBrowser.openBrowser`
 
 ```reason
-(string, iosOptions) => Js.Promise.t(browserResult) 
-```
-
-#### `ReactNativeInAppBrowser.openBrowserAndroid`
-
-```reason
-(string, androidOptions) => Js.Promise.t(browserResult) 
+(string,  [ `AndroidOptions(androidOptions) | `IosOptions(iosOptions) ]) => Js.Promise.t(browserResult)
 ```
 
 #### `ReactNativeInAppBrowser.close`
@@ -95,16 +91,10 @@ openAuthIos("https://example.com/auth", "myschema://auth", iosOptions())
 unit => unit
 ```
 
-#### `ReactNativeInAppBrowser.openAuthIos`
+#### `ReactNativeInAppBrowser.openAuth`
 
 ```reason
-(string, iosOptions) => Js.Promise.t(authResult) 
-```
-
-#### `ReactNativeInAppBrowser.openAuthAndroid`
-
-```reason
-(string, androidOptions) => Js.Promise.t(authResult) 
+(string, [ `AndroidOptions(androidOptions) | `IosOptions(iosOptions) ]) => Js.Promise.t(authResult)
 ```
 
 #### `ReactNativeInAppBrowser.closeAuth`
