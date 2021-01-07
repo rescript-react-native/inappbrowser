@@ -41,8 +41,6 @@ yarn add @reason-react-native/inappbrowser
 
 ## Usage
 
-### Examples
-
 ```reason
 open Js.Promise;
 
@@ -71,15 +69,49 @@ openAuthIos("https://example.com/auth", "myschema://auth", iosOptions())
 
 ### Types
 
-#### `ReactNativeInAppBrowser.t`
+#### `authResult`
+#### `browserResult`
+#### `iosOptions`
+#### `androidOptions`
 
-...
 
 ### Methods
 
-#### `ReactNativeInAppBrowser.method`
+#### `ReactNativeInAppBrowser.openBrowserIos`
 
-...
+```reason
+(string, iosOptions) => Js.Promise.t(browserResult) 
+```
+
+#### `ReactNativeInAppBrowser.openBrowserAndroid`
+
+```reason
+(string, androidOptions) => Js.Promise.t(browserResult) 
+```
+
+#### `ReactNativeInAppBrowser.close`
+
+```reason
+unit => unit
+```
+
+#### `ReactNativeInAppBrowser.openAuthIos`
+
+```reason
+(string, iosOptions) => Js.Promise.t(authResult) 
+```
+
+#### `ReactNativeInAppBrowser.openAuthAndroid`
+
+```reason
+(string, androidOptions) => Js.Promise.t(authResult) 
+```
+
+#### `ReactNativeInAppBrowser.closeAuth`
+
+```reason
+unit => unit
+```
 
 ---
 
