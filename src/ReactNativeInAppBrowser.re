@@ -29,7 +29,7 @@ external iosOptions:
                                | `pageSheet
                                | `formSheet
                                | `currentContext
-                               | `ustom
+                               | `custom
                                | `overFullScreen
                                | `overCurrentContext
                                | `popover
