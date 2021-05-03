@@ -1,4 +1,4 @@
-# Changelog of `@reason-react-native/inappbrowser`
+# Changelog of `@rescript-react-native/inappbrowser`
 
 ## 3.5.0 - 2021-01-07
 
